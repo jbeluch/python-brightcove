@@ -160,14 +160,14 @@ class Brightcove(object):
                             playlist_fields=None, custom_fields=None,
                             media_delivery=None, output=None):
         params = validate_params(**locals())
-        return self._read_api('find_playlist_by__id', params, cls=Playlist)
+        return self._read_api('find_playlist_by_id', params, cls=Playlist)
 
-    def find_playlist_by_ids(self, playlist_ids, fields=None,
-                             video_fields=None, playlist_fields=None,
-                             custom_fields=None, media_delivery=None,
-                             output=None):
+    def find_playlists_by_ids(self, playlist_ids, fields=None,
+                              video_fields=None, playlist_fields=None,
+                              custom_fields=None, media_delivery=None,
+                              output=None):
         params = validate_params(**locals())
-        return self._read_api('find_playlist_by__id', params,
+        return self._read_api('find_playlists_by_ids', params,
                              cls=item_collection_factory(Playlist))
 
     def find_playlist_by_reference_id(self, reference_id, fields=None,
@@ -178,12 +178,14 @@ class Brightcove(object):
         return self._read_api('find_playlist_by_reference_id', params,
                              cls=Playlist)
 
-    def find_playlist_by_reference_ids(self, reference_ids, fields=None,
-                                      video_fields=None, playlist_fields=None,
-                                      custom_fields=None, media_delivery=None,
-                                      output=None):
+    def find_playlists_by_reference_ids(self, reference_ids, fields=None,
+                                        video_fields=None,
+                                        playlist_fields=None,
+                                        custom_fields=None,
+                                        media_delivery=None,
+                                        output=None):
         params = validate_params(**locals())
-        return self._read_api('find_playlist_by_reference_ids', params,
+        return self._read_api('find_playlists_by_reference_ids', params,
                              cls=item_collection_factory(Playlist))
 
     def find_playlists_for_player_id(self, player_id, page_size=None,
