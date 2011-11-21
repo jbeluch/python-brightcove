@@ -19,7 +19,6 @@ class Connection(object):
     def _request(self, url, data=None):
         conn = urlopen(url, data)
         resp = conn.read()
-        write_file(url, conn.info(), resp)
         conn.close()
         return resp
 
