@@ -79,13 +79,16 @@ class ItemCollection(APIObject):
         for item in self.items:
             yield item
 
+
 class VideoItemCollection(ItemCollection):
     _item_class = Video
     items = ListField(Video)
 
+
 class PlaylistItemCollection(ItemCollection):
     _item_class = Playlist
     items = ListField(Playlist)
+
 
 # Enums
 SortByType = enum('PUBLISH_DATE', 'CREATION_DATE', 'MODIFIED_DATE',

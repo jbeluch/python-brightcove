@@ -4,11 +4,6 @@ from brightcove.api import Brightcove
 from brightcove.objects import Video, Playlist, VideoItemCollection, PlaylistItemCollection
 from tests import utils
 
-'''
-TODO: by_id and by_ids should take strings and ints
-TODO: fix itemcolelctino facotry, introduce subclasses
-TODO: enable any dates (find_modified_videos_ to use pyhton datetimes
-'''
 
 class TestBrightcove(TestCase):
 
