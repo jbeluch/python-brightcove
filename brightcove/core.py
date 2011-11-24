@@ -1,5 +1,5 @@
 from datetime import datetime
-from urllib import urlencode, urlopen
+import urllib
 
 
 def get_item(resp, cls):
@@ -17,7 +17,8 @@ class Connection(object):
         self.token = token
 
     def _request(self, url, data=None):
-        conn = urlopen(url, data)
+        print 'in real Connection._request'
+        conn = urllib.urlopen(url, data)
         resp = conn.read()
         conn.close()
         return resp
@@ -26,7 +27,7 @@ class Connection(object):
         if params is None:
             params = {}
         params.update({'token': self.token})
-        data = urlencode(params)
+        data = urllib.urlencode(params)
         url = '%s?%s' % (url, data)
 
         return self._request(url)

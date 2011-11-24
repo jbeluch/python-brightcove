@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 from decorators import requires_or, validate_params
-from objects import Video, Playlist, item_collection_factory
+from objects import Video, Playlist, VideoItemCollection, PlaylistItemCollection
 from core import get_item, Connection
 try:
     import json
@@ -40,7 +40,8 @@ class Brightcove(object):
         '''
         params = validate_params(**locals())
         return self._read_api('search_videos', params,
-                             cls=item_collection_factory(Video))
+                              cls=VideoItemCollection)
+                             #cls=VideoItemCollection)
 
     def find_all_videos(self, page_size=None, page_number=None, sort_by=None,
                         sort_order=None, get_item_count=None,
@@ -50,11 +51,12 @@ class Brightcove(object):
         '''
         params = validate_params(**locals())
         return self._read_api('find_all_videos', params,
-                             cls=item_collection_factory(Video))
+                             cls=VideoItemCollection)
 
     def find_video_by_id(self, video_id, fields=None, video_fields=None,
                          custom_fields=None, media_delivery=None, output=None):
         params = validate_params(**locals())
+        print 'in find_video_by_id'
         #return Video(**self._read_api('find_video_by_id', params))
         return self._read_api('find_video_by_id', params, cls=Video)
 
@@ -67,14 +69,14 @@ class Brightcove(object):
 
         params = validate_params(**locals())
         return self._read_api('find_related_videos', params,
-                             cls=item_collection_factory(Video))
+                             cls=VideoItemCollection)
 
     def find_videos_by_ids(self, video_ids, fields=None, video_fields=None,
                            custom_fields=None, media_delivery=None,
                            output=None):
         params = validate_params(**locals())
         return self._read_api('find_videos_by_ids', params,
-                             cls=item_collection_factory(Video))
+                             cls=VideoItemCollection)
 
     def find_video_by_reference_id(self, reference_id, fields=None,
                                    video_fields=None, custom_fields=None,
@@ -87,7 +89,7 @@ class Brightcove(object):
                                    media_delivery=None, output=None):
         params = validate_params(**locals())
         return self._read_api('find_videos_by_reference_ids', params,
-                             cls=item_collection_factory(Video))
+                             cls=VideoItemCollection)
 
     def find_videos_by_user_id(self, user_id, page_size=None, page_number=None,
                                sort_by=None, sort_order=None,
@@ -96,7 +98,7 @@ class Brightcove(object):
                                media_delivery=None, output=None):
         params = validate_params(**locals())
         return self._read_api('find_videos_by_user_id', params,
-                             cls=item_collection_factory(Video))
+                             cls=VideoItemCollection)
 
     def find_videos_by_campaign_id(self, campaign_id, page_size=None,
                                    page_number=None, sort_by=None,
@@ -106,7 +108,7 @@ class Brightcove(object):
                                    output=None):
         params = validate_params(**locals())
         return self._read_api('find_videos_by_campaign_id', params,
-                             cls=item_collection_factory(Video))
+                             cls=VideoItemCollection)
 
     def find_modified_videos(self, from_date, filter=None, page_size=None,
                              page_number=None, sort_by=None, sort_order=None,
@@ -115,7 +117,7 @@ class Brightcove(object):
                              media_delivery=None, output=None):
         params = validate_params(**locals())
         return self._read_api('find_modified_videos', params,
-                             cls=item_collection_factory(Video))
+                             cls=VideoItemCollection)
 
     def find_video_by_id_unfiltered(self, video_id, fields=None,
                                     video_fields=None, custom_fields=None,
@@ -128,7 +130,7 @@ class Brightcove(object):
                                     media_delivery=None):
         params = validate_params(**locals())
         return self._read_api('find_video_by_ids_unfiltered', params,
-                             cls=item_collection_factory(Video))
+                             cls=VideoItemCollection)
 
     def find_video_by_reference_id_unfiltered(self, reference_id, fields=None,
                                               video_fields=None,
@@ -144,7 +146,7 @@ class Brightcove(object):
                                                media_delivery=None):
         params = validate_params(**locals())
         return self._read_api('find_videos_by_reference_ids_unfiltered',
-                              params, cls=item_collection_factory(Video))
+                              params, cls=VideoItemCollection)
 
     ## Playlist stuff
     def find_all_playlists(self, page_size=None, page_number=None,
@@ -154,7 +156,7 @@ class Brightcove(object):
                            media_delivery=None, output=None):
         params = validate_params(**locals())
         return self._read_api('find_all_playlists', params,
-                             cls=item_collection_factory(Playlist))
+                             cls=PlaylistItemCollection)
 
     def find_playlist_by_id(self, playlist_id, fields=None, video_fields=None,
                             playlist_fields=None, custom_fields=None,
@@ -168,7 +170,7 @@ class Brightcove(object):
                               output=None):
         params = validate_params(**locals())
         return self._read_api('find_playlists_by_ids', params,
-                             cls=item_collection_factory(Playlist))
+                             cls=PlaylistItemCollection)
 
     def find_playlist_by_reference_id(self, reference_id, fields=None,
                                       video_fields=None, playlist_fields=None,
@@ -186,7 +188,7 @@ class Brightcove(object):
                                         output=None):
         params = validate_params(**locals())
         return self._read_api('find_playlists_by_reference_ids', params,
-                             cls=item_collection_factory(Playlist))
+                             cls=PlaylistItemCollection)
 
     def find_playlists_for_player_id(self, player_id, page_size=None,
                                      page_number=None, get_item_count=None,
@@ -195,4 +197,4 @@ class Brightcove(object):
                                      media_delivery=None, output=None):
         params = validate_params(**locals())
         return self._read_api('find_playlists_for_player_id', params,
-                             cls=item_collection_factory(Playlist))
+                             cls=PlaylistItemCollection)
