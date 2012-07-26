@@ -1,3 +1,6 @@
+1.1.1
+* Version change to be compatible with dharma
+
 0.1.1
 * Fix broken API methods.
 * Add unit tests.
