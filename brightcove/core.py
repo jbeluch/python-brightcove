@@ -10,7 +10,7 @@ def get_item(resp, cls):
     '''Converts a response dictionary to a class instance.
 
     Returns cls(**resp).
-    
+
     '''
     try:
         params = dict((str(key), val) for key, val in resp.items())
@@ -62,7 +62,7 @@ class Field(object):
 class DateTimeField(Field):
     '''Handles conversion from milliseconds to python datetime.'''
     def to_python(self, value):
-        return datetime.fromtimestamp(int(value) / 1000)
+        return datetime.utcfromtimestamp(int(value) / 1000)
 
     def from_python(self, value):
         return str(int(value.strftime('%s')) * 1000)

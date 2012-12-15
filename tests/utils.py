@@ -1,4 +1,4 @@
-from unittest2 import TestCase
+from unittest import TestCase
 import hashlib
 import urllib
 from urlparse import parse_qs

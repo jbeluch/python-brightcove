@@ -1,5 +1,4 @@
-import unittest2
-from unittest2 import TestCase
+from unittest import TestCase
 from brightcove.api import Brightcove
 from brightcove.objects import Video, Playlist, VideoItemCollection, PlaylistItemCollection
 from tests import utils
