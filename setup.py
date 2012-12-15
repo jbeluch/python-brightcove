@@ -9,7 +9,7 @@ def read(fname):
     return open(os.path.join(os.path.dirname(__file__), fname)).read()
 
 setup(
-    name = 'python-brightcove',
+    name = 'brightcove',
     version = '0.1',
     author = 'Jonathan Beluch',
     author_email = 'web@jonathanbeluch.com',
