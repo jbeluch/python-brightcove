@@ -10,7 +10,7 @@ def read(fname):
 
 setup(
     name = 'brightcove',
-    version = '0.1',
+    version = '0.2',
     author = 'Jonathan Beluch',
     author_email = 'web@jonathanbeluch.com',
     description = 'A python wrapper for the Brightcove read-only API.',
